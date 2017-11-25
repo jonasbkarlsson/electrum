@@ -1,4 +1,16 @@
 {
+    "CoinFloor": [
+        "GBP"
+    ],
+    "CEXIO": [
+        "GBP",
+        "EUR",
+        "USD",
+        "BTC"
+    ],
+    "BtcMarkets": [
+        "AUD"
+    ],
     "Kraken": [
         "EUR",
         "USD"
