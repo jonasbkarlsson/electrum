@@ -23,11 +23,10 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-
-
 import os
 import util
 import threading
+import traceback
 
 import bitcoin
 from bitcoin import *
@@ -446,7 +445,9 @@ class Blockchain(util.PrintError):
         try:
             self.verify_header(header, previous_header, bits)
         except:
-            #self.print_error('can_connect: verify_header failed');
+            traceback.print_exc()
+            self.print_error('verify header {} failed at height {:d}'
+                             .format(hash_header(header), height))
             return False
         return True
 
