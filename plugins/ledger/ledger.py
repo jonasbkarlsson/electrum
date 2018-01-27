@@ -335,7 +335,7 @@ class Ledger_KeyStore(Hardware_KeyStore):
             self.get_client().enableAlternate2fa(False)
             self.get_client().startUntrustedTransaction(True, inputIndex,
                                                         chipInputs, redeemScripts[inputIndex])
-            outputData = self.get_client().finalizeInputFull(txOutput)
+            outputData = self.get_client().finalizeInputFull(txOutput, cashaddr=True)
             outputData['outputData'] = txOutput
             transactionOutput = outputData['outputData']
             if outputData['confirmationNeeded']:
@@ -375,7 +375,7 @@ class Ledger_KeyStore(Hardware_KeyStore):
         address_path = self.get_derivation()[2:] + "/%d/%d" % sequence
         self.handler.show_message(_("Showing address ..."))
         try:
-            self.get_client().getWalletPublicKey(address_path, showOnScreen=True)
+            self.get_client().getWalletPublicKey(address_path, showOnScreen=True, cashaddr=True)
         except:
             pass
         finally:
